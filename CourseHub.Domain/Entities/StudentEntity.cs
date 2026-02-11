@@ -12,4 +12,6 @@ public class StudentEntity
 
     public DateTime CreatedAtUtc { get; set; }
     public DateTime ModifiedAtUtc { get; set; }
+
+    public ICollection<EnrollmentEntity> Enrollments { get; set; } = [];
 }

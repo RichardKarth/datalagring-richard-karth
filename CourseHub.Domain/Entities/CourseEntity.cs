@@ -7,5 +7,7 @@
         public string? Description { get; private set; }
         public int DurationDays { get; private set; }
 
+        public ICollection<CourseInstanceEntity> CourseInstances { get; set; } = [];
+
     }
 }

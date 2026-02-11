@@ -3,12 +3,14 @@ namespace CourseHub.Domain.Entities;
 
 public class EnrollmentEntity
 {
-    public int Id { get; private set; }
+    //JOIN TABLE
+    public int Id { get; set; }
 
-    public int StudentId { get; private set; }
+    //FK
+    public int StudentId { get; set; }
+    public StudentEntity Student { get; set; } = null!;
 
-    public int CourseInstanceId { get; private set; }
-
-    public DateTime RegisteredAt { get; private set; }
-    
+    //FK
+    public int CourseInstanceId { get; set; }
+    public CourseInstanceEntity CourseInstance { get; set; } = null!;
 }

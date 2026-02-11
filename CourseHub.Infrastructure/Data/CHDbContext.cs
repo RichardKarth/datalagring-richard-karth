@@ -8,6 +8,7 @@ namespace CourseHub.Infrastructure.Data
     {
 
         public DbSet<StudentEntity> Student => Set<StudentEntity> ();
+        public DbSet<CourseEntity> Courses => Set<CourseEntity>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -35,7 +36,31 @@ namespace CourseHub.Infrastructure.Data
 
                 entity.HasIndex(e => e.Email, "UQ_Students_Email").IsUnique();
                 entity.ToTable(tb => tb.HasCheckConstraint("CK_Student_Email_NotEmpty", "LTRIM(RTRIM([Email])) <> ''"));
+
+
+                entity.Property(e => e.Enrollments)
             });
+
+
+
+
+
+
+            modelBuilder.Entity<CourseEntity>(entity =>
+            {
+                entity.ToTable("Courses");
+                entity.HasKey(e => e.Id).HasName("PK_Courses_Id");
+
+                entity.Property(e => e.Title).IsRequired();
+                entity.HasIndex(e => e.Title);
+
+                entity.Property(e => e.Description).IsRequired(false);
+            });
+
+
+            modelBuilder.Entity<StudentEntity>().HasMany(m => m.Enrollments);
+
+
         }
     }
 }
