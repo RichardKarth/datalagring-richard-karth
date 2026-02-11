@@ -7,12 +7,14 @@ public class CourseInstanceEntity
 
     //FK
     public int CourseId { get; private set; }
+    public CourseEntity Course { get; private set; } = null!;
     // FK
     public int TeacherId { get; private set; }
+    public TeacherEntity Teacher { get; private set; } = null!;
 
 
-    public DateOnly StartDate { get; private set; }
-    public DateOnly EndDate { get; private set; }
+    public DateOnly StartDateUtc { get; private set; }
+    public DateOnly EndDateUtc { get; private set; }
     public string Location { get; private set; } = null!;
     public int Capacity { get; private set; }
 
