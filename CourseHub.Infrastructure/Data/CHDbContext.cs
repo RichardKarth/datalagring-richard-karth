@@ -1,5 +1,4 @@
-﻿
-using CourseHub.Domain.Entities;
+﻿using CourseHub.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace CourseHub.Infrastructure.Data

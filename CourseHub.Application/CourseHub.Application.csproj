@@ -10,4 +10,10 @@
     <ProjectReference Include="..\CourseHub.Domain\CourseHub.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Courses\" />
+    <Folder Include="Students\Inputs\" />
+    <Folder Include="Students\Outputs\" />
+  </ItemGroup>
+
 </Project>

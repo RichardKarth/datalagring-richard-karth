@@ -5,7 +5,7 @@ namespace CourseHub.Application.Abstractions.Persistence
     {
 
 
-        Task AddByIdAsync(TKey id, CancellationToken ct = default);
+        Task AddAsync(TModel model, CancellationToken ct = default);
 
         Task<TModel?> GetByIdAsync(TKey id, CancellationToken ct = default);
         Task<IReadOnlyList<TModel>> ListAsync(CancellationToken ct = default);

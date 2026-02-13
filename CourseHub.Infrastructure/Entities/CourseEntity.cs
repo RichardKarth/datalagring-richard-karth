@@ -1,4 +1,4 @@
-﻿namespace CourseHub.Domain.Entities
+﻿namespace CourseHub.Infrastructure.Entities
 {
     public class CourseEntity
     {
