@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CourseHub.Infrastructure.Repositories;
 
-public abstract class RepositoryBase<TModel, TKey, TEntity>(CHDbContext context) : IRepositoryBase<TModel, TKey>
+public abstract class RepositoryBase<TEntity, TKey, TModel>(CHDbContext context) : IRepositoryBase<TModel, TKey>
     where TModel : class
     where TEntity : class, 
     IEntity<TKey>
@@ -16,8 +16,8 @@ public abstract class RepositoryBase<TModel, TKey, TEntity>(CHDbContext context)
 
 
 
-    public abstract TModel ToModel(TEntity entity);
-    public abstract Task AddByIdAsync(TKey id, CancellationToken ct = default);
+    public abstract TModel ToPersistanceModel(TEntity entity);
+    public abstract Task AddAsync(TModel model, CancellationToken ct = default);
     public abstract Task UpdateAsync(TModel model, CancellationToken ct = default);
 
 
@@ -38,13 +38,13 @@ public abstract class RepositoryBase<TModel, TKey, TEntity>(CHDbContext context)
         if (entity == null)
             return default;
 
-        return ToModel(entity);
+        return ToPersistanceModel(entity);
     }
 
     public virtual async Task<IReadOnlyList<TModel>> ListAsync(CancellationToken ct = default)
     {
         var entities = await Set.AsNoTracking().ToListAsync(ct);
 
-        return entities.Select(ToModel).ToList();
+        return entities.Select(ToPersistanceModel).ToList();
     }
 }

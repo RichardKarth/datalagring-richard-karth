@@ -1,4 +1,4 @@
-﻿using CourseHub.Domain.Entities;
+﻿using CourseHub.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
