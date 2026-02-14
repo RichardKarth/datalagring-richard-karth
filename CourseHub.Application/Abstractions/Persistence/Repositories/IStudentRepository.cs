@@ -7,4 +7,5 @@ public interface IStudentRepository : IRepositoryBase<Student, int>
 {
     Task<bool> EmailExistsAsync(string email, CancellationToken ct = default);
 
+
 }

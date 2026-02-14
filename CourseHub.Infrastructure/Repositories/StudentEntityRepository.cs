@@ -1,12 +1,10 @@
 ﻿
-
-using CourseHub.Application.Abstractions.Persistence;
 using CourseHub.Application.Abstractions.Persistence.Repositories;
 using CourseHub.Application.Students.PersistanceModels;
 using CourseHub.Infrastructure.Data;
 using CourseHub.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
+
 
 namespace CourseHub.Infrastructure.Repositories;
 
@@ -31,6 +29,7 @@ public class StudentEntityRepository(CHDbContext context) : RepositoryBase<Stude
 
         };
         await Set.AddAsync(entity, ct);
+        return entity;
     }
 
     public override Student ToPersistanceModel(StudentEntity entity)
