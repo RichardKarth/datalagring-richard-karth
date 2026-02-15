@@ -17,7 +17,7 @@ public abstract class RepositoryBase<TEntity, TKey, TModel>(CHDbContext context)
 
 
     public abstract TModel ToPersistanceModel(TEntity entity);
-    public abstract Task<TEntity> AddAsync(TModel model, CancellationToken ct = default);
+    public abstract Task AddAsync(TModel model, CancellationToken ct = default);
     public abstract Task UpdateAsync(TModel model, CancellationToken ct = default);
 
 

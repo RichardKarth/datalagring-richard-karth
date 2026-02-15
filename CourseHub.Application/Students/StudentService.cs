@@ -6,7 +6,6 @@ using CourseHub.Application.Students.Inputs;
 using CourseHub.Application.Students.Outputs;
 using CourseHub.Application.Students.PersistanceModels;
 using CourseHub.Domain.Students.ValueObjects;
-using System.ComponentModel.DataAnnotations;
 
 namespace CourseHub.Application.Students;
 
@@ -20,7 +19,7 @@ public sealed class StudentService(IStudentRepository studentRepository, IUnitOf
 
 
 
-    public async Task<int> CreateAsync(CreateStudentInput input, IStudentRepository studentRepository, CancellationToken ct)
+    public async Task CreateAsync(CreateStudentInput input, IStudentRepository studentRepository, CancellationToken ct)
     {
         var email = new Email(input.Email);
         var createdAt = DateTime.UtcNow;
@@ -38,11 +37,11 @@ public sealed class StudentService(IStudentRepository studentRepository, IUnitOf
 
 
         };
-        var entity = await studentRepository.AddAsync(student, ct);
+        await studentRepository.AddAsync(student, ct);
 
         await uow.SaveChangesAsync(ct);
 
-        return entity.Id;
+        
     }
 
     public async Task DeleteAsync(int id, CancellationToken ct)
