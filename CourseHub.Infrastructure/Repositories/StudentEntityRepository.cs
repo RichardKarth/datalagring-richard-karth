@@ -1,12 +1,10 @@
 ﻿
-
-using CourseHub.Application.Abstractions.Persistence;
 using CourseHub.Application.Abstractions.Persistence.Repositories;
 using CourseHub.Application.Students.PersistanceModels;
 using CourseHub.Infrastructure.Data;
 using CourseHub.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.VisualBasic;
+
 
 namespace CourseHub.Infrastructure.Repositories;
 
@@ -31,20 +29,23 @@ public class StudentEntityRepository(CHDbContext context) : RepositoryBase<Stude
 
         };
         await Set.AddAsync(entity, ct);
+        
     }
 
     public override Student ToPersistanceModel(StudentEntity entity)
     {
-        return new Student(
-            entity.Id,
-            entity.Email,
-            entity.FirstName,
-            entity.LastName,
-            entity.PhoneNumber,
-            entity.CreatedAtUtc,
-            entity.ModifiedAtUtc,
-            entity.Concurrency
-        );
+        Student student = new Student
+        {
+            Id = entity.Id,
+            FirstName = entity.FirstName,
+            LastName = entity.LastName,
+            PhoneNumber = entity.PhoneNumber,
+            CreatedAtUtc = entity.CreatedAtUtc,
+            ModifiedAtUtc = entity.ModifiedAtUtc,
+            RowVersion = entity.Concurrency
+        };
+
+        return student;
     }
 
     public override async Task UpdateAsync(Student model, CancellationToken ct = default)
