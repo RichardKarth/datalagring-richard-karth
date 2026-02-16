@@ -1,11 +1,13 @@
-﻿namespace CourseHub.Infrastructure.Entities
+﻿using CourseHub.Application.Abstractions.Persistence;
+
+namespace CourseHub.Infrastructure.Entities
 {
-    public class CourseEntity
+    public class CourseEntity : IEntity<int>
     {
-        public int Id { get; private set; }
-        public string Title { get; private set; } = null!;
-        public string? Description { get; private set; }
-        public int DurationDays { get; private set; }
+        public int Id { get; set; } 
+        public string Title { get; set; } = null!;
+        public string? Description { get; set; }
+        public int DurationDays { get; set; }
 
         public ICollection<CourseInstanceEntity> CourseInstances { get; set; } = [];
 
