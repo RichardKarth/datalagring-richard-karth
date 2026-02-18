@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CourseHub.Application.Abstractions.Services
 {
-    internal interface ICourseInstanceService
+    public interface ICourseInstanceService
     {
     }
 }
