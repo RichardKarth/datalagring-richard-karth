@@ -10,8 +10,8 @@ using CourseHub.Infrastructure.Repositories;
 using CourseHub.Infrastructure.UnitOfWork;
 using Microsoft.EntityFrameworkCore;
 
-var builder = WebApplication.CreateBuilder(args);
 
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddOpenApi();
 
@@ -23,7 +23,6 @@ builder.Services.AddDbContext<CHDbContext>(options => options.UseSqlServer(
 
 //Unit of Work
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
 
 // Repositories
 builder.Services.AddScoped<IStudentRepository, StudentEntityRepository>();
@@ -38,21 +37,6 @@ builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<ITeacherService, TeacherService>();
 builder.Services.AddScoped<ICourseInstanceService, CourseInstanceService>();
 builder.Services.AddScoped<IEnrollmentService, EnrollmentService>();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 var app = builder.Build();
 
