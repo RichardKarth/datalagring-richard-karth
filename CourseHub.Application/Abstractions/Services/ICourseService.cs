@@ -10,7 +10,7 @@ namespace CourseHub.Application.Abstractions.Services
 {
     public interface ICourseService
     {
-        Task CreateAsync(CreateCourseInput input, ICourseRepository courseRepository, CancellationToken ct);
+        Task CreateAsync(CreateCourseInput input, CancellationToken ct);
 
         Task<CourseOutput?> GetByIdAsync(int id, CancellationToken ct);
         Task<IReadOnlyList<CourseOutput>> GetAllAsync(CancellationToken ct);

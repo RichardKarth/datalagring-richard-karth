@@ -39,7 +39,7 @@ public sealed class CourseInstanceService(ICourseInstanceRepository repo, IUnitO
         };
 
         await repo.AddAsync(model, ct);
-        await uow.SaveChangesAsync(ct);
+            await uow.SaveChangesAsync(ct);
     }
 
     public async Task<IReadOnlyList<CourseInstanceOutput>> GetAllAsync(CancellationToken ct)

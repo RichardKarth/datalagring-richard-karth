@@ -23,5 +23,9 @@ internal class StudentConfig : IEntityTypeConfiguration<StudentEntity>
         entity.Property(x => x.PhoneNumber).HasMaxLength(13).IsUnicode(false);
 
         entity.HasIndex(x => x.Email).IsUnique().HasDatabaseName("UQ_Students_Email");
+
+        entity.Property(x => x.Concurrency)
+        .IsRowVersion()
+        .IsConcurrencyToken();
     }
 }

@@ -17,7 +17,7 @@ public sealed record Email
             throw new ArgumentException("Email is required.", nameof (value));
         }
         var trimmed = value.Trim();
-        if(EmailRegex.IsMatch(trimmed))
+        if(!EmailRegex.IsMatch(trimmed))
         {
             throw new ArgumentException("Invalid email format.", nameof(trimmed));
         }

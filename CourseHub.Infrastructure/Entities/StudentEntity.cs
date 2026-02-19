@@ -9,7 +9,7 @@ public class StudentEntity : IEntity<int>
     public string LastName { get; set; } = null!;
     public string Email { get; set; } = null!;
     public string? PhoneNumber { get; set; }
-    public byte[] Concurrency { get; set; } = null!;
+    public byte[] Concurrency { get; set; } = default!;
 
     public DateTime CreatedAtUtc { get; set; }
     public DateTime ModifiedAtUtc { get; set; }
