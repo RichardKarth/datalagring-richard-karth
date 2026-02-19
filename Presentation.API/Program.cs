@@ -26,6 +26,15 @@ builder.Services.AddDbContext<CHDbContext>(options => options.UseSqlServer(
     sql => sql.MigrationsAssembly("CourseHub.Infrastructure")
  ));
 
+//Cors
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("react", p =>
+        p.WithOrigins("http://localhost:5173")
+         .AllowAnyHeader()
+         .AllowAnyMethod());
+});
+
 //Unit of Work
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
@@ -45,7 +54,7 @@ builder.Services.AddScoped<IEnrollmentService, EnrollmentService>();
 
 var app = builder.Build();
 
-
+app.UseCors("react");
 app.MapOpenApi();
 app.UseHttpsRedirection();
 
