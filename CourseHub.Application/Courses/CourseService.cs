@@ -22,7 +22,7 @@ namespace CourseHub.Application.Courses
             };
             return courseOutput;
         }
-        public async Task CreateAsync(CreateCourseInput input, ICourseRepository courseRepository, CancellationToken ct)
+        public async Task CreateAsync(CreateCourseInput input, CancellationToken ct)
         {
             var createdAt = DateTime.UtcNow;
 

@@ -24,6 +24,7 @@ public class StudentEntityRepository(CHDbContext context) : RepositoryBase<Stude
             Email = model.Email,
             FirstName = model.FirstName,
             LastName = model.LastName,
+            PhoneNumber = string.IsNullOrWhiteSpace(model.PhoneNumber) ? null : model.PhoneNumber.Trim(),
             CreatedAtUtc = model.CreatedAtUtc == default ? DateTime.UtcNow : model.CreatedAtUtc,
             ModifiedAtUtc = model.ModifiedAtUtc == default ? DateTime.UtcNow : model.ModifiedAtUtc,
 
@@ -34,18 +35,17 @@ public class StudentEntityRepository(CHDbContext context) : RepositoryBase<Stude
 
     public override Student ToPersistanceModel(StudentEntity entity)
     {
-        Student student = new Student
+        return new Student
         {
             Id = entity.Id,
             FirstName = entity.FirstName,
             LastName = entity.LastName,
-            PhoneNumber = entity.PhoneNumber,
+            Email = entity.Email,
+            PhoneNumber = entity.PhoneNumber, 
             CreatedAtUtc = entity.CreatedAtUtc,
             ModifiedAtUtc = entity.ModifiedAtUtc,
             RowVersion = entity.Concurrency
         };
-
-        return student;
     }
 
     public override async Task UpdateAsync(Student model, CancellationToken ct = default)
