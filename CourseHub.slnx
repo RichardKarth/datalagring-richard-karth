@@ -2,7 +2,7 @@
   <Project Path="CourseHub.Application/CourseHub.Application.csproj" />
   <Project Path="CourseHub.Domain/CourseHub.Domain.csproj" />
   <Project Path="CourseHub.Infrastructure/CourseHub.Infrastructure.csproj" />
-  <Project Path="CourseHub.Web/CourseHub.Web.esproj">
+  <Project Path="CourseHub.Web/coursehub.web.esproj">
     <Build />
     <Deploy />
   </Project>

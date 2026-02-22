@@ -72,5 +72,17 @@ namespace CourseHub.Application.Teachers
             var outPutModel = ToOutputModel(course);
             return outPutModel;
         }
+        public async Task<bool> UpdateAsync(int id, UpdateTeacherInput input, CancellationToken ct)
+        {
+            var entity = await teacherRepository.GetByIdAsync(id, ct);
+            if (entity is null) return false;
+
+            entity.FirstName = input.FirstName;
+            entity.LastName = input.LastName;
+            entity.Email = input.Email;
+
+            await uow.SaveChangesAsync(ct);
+            return true;
+        }
     }
 }
