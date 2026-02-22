@@ -12,5 +12,6 @@ namespace CourseHub.Application.Abstractions.Services
         Task<IReadOnlyList<CourseInstanceOutput>> GetAllAsync(CancellationToken ct);
         Task<CourseInstanceOutput?> GetByIdAsync(int id, CancellationToken ct);
         Task DeleteAsync(int id, CancellationToken ct);
+        Task<bool> UpdateAsync(int id, UpdateCourseInstanceInput input, CancellationToken ct);
     }
 }

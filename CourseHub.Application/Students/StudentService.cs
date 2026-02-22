@@ -70,4 +70,18 @@ public sealed class StudentService(IStudentRepository studentRepository, IUnitOf
         var student = await studentRepository.GetByIdAsync(id, ct);
         return student is null ? null : ToOutputModel(student);
     }
+    public async Task<bool> UpdateAsync(int id, UpdateStudentInput input, CancellationToken ct)
+    {
+        var entity = await studentRepository.GetByIdAsync(id, ct);
+        if (entity is null) return false;
+
+        entity.FirstName = input.FirstName;
+        entity.LastName = input.LastName;
+        entity.Email = input.Email;
+        entity.PhoneNumber = input.PhoneNumber;
+        entity.ModifiedAtUtc = DateTime.UtcNow;
+
+        await uow.SaveChangesAsync(ct);
+        return true;
+    }
 }

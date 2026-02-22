@@ -17,5 +17,7 @@ namespace CourseHub.Application.Abstractions.Services
 
 
         Task DeleteAsync(int id, CancellationToken ct);
+
+        Task<bool> UpdateAsync(int id, UpdateCourseInput input, CancellationToken ct);
     }
 }

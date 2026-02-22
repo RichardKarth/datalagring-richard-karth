@@ -56,4 +56,20 @@ public sealed class CourseInstanceService(ICourseInstanceRepository repo, IUnitO
         await repo.DeleteByIdAsync(id, ct);
         await uow.SaveChangesAsync(ct);
     }
+
+    public async Task<bool> UpdateAsync(int id, UpdateCourseInstanceInput input, CancellationToken ct)
+    {
+        var entity = await repo.GetByIdAsync(id, ct);
+        if (entity is null) return false;
+
+        entity.CourseId = input.CourseId;
+        entity.TeacherId = input.TeacherId;
+        entity.StartDateUtc = input.StartDateUtc;
+        entity.EndDateUtc = input.EndDateUtc;
+        entity.Location = input.Location;
+        entity.Capacity = input.Capacity;
+
+        await uow.SaveChangesAsync(ct);
+        return true;
+    }
 }

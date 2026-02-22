@@ -15,4 +15,6 @@ public interface IStudentService
 
 
     Task DeleteAsync(int id, CancellationToken ct);
+
+    Task<bool> UpdateAsync(int id, UpdateStudentInput input, CancellationToken ct);
 }
