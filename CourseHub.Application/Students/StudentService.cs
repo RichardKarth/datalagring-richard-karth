@@ -81,6 +81,8 @@ public sealed class StudentService(IStudentRepository studentRepository, IUnitOf
         entity.PhoneNumber = input.PhoneNumber;
         entity.ModifiedAtUtc = DateTime.UtcNow;
 
+        await studentRepository.UpdateAsync(entity, ct);
+
         await uow.SaveChangesAsync(ct);
         return true;
     }

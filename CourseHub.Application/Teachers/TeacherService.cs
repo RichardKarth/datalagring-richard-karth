@@ -6,9 +6,7 @@ using CourseHub.Application.Courses.PersistanceModels;
 using CourseHub.Application.Teachers.Inputs;
 using CourseHub.Application.Teachers.Outputs;
 using CourseHub.Application.Teachers.PersistanceModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
+
 
 namespace CourseHub.Application.Teachers
 {
@@ -80,6 +78,8 @@ namespace CourseHub.Application.Teachers
             entity.FirstName = input.FirstName;
             entity.LastName = input.LastName;
             entity.Email = input.Email;
+
+            await teacherRepository.UpdateAsync(entity, ct);
 
             await uow.SaveChangesAsync(ct);
             return true;

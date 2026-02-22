@@ -76,6 +76,8 @@ public class CourseService(ICourseRepository courseRepository, IUnitOfWork uow) 
         entity.Description = input.Description;
         entity.DurationDays = input.DurationDays;
 
+        await courseRepository.UpdateAsync(entity, ct);
+
         await uow.SaveChangesAsync(ct);
         return true;
     }

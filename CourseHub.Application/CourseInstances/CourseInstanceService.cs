@@ -69,6 +69,8 @@ public sealed class CourseInstanceService(ICourseInstanceRepository repo, IUnitO
         entity.Location = input.Location;
         entity.Capacity = input.Capacity;
 
+        await repo.UpdateAsync(entity, ct);
+
         await uow.SaveChangesAsync(ct);
         return true;
     }
